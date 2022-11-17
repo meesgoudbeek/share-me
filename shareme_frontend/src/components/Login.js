@@ -9,10 +9,8 @@ import { client } from '../client';
 const Login = () => {
   const navigate = useNavigate();
   const responseGoogle = (response) => {
-    localStorage.setItem('user', JSON.stringify(response));
-    var decodedHeader = jwt_decode(response.credential);
-
-    console.log(decodedHeader);
+    const decodedHeader = jwt_decode(response.credential);
+    localStorage.setItem('user', JSON.stringify(decodedHeader));
     const doc = {
       _id: decodedHeader.sub,
       _type: 'user',
